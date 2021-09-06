@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --color-blue: #286EFA;
+    --color-white: #FFFFFF;
+    --text-color-black-bold:#333333;
+    --text-color-black-solid: #777777;
+    --button-deactive:#EDEDED;
+    --label-border: #EDEDED;
+    --bg-white:#F9F9F9;
+    --font-family: 'Roboto';
+}
+
+
+/* Colors */
+/*
+dark blue: #476A6F
+light blue: #258EA6
+dark green: #519E8A
+medium green: #7EB09B
+light green: #A3C4BC
+*/
+
+.wrapper {
+  /* height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #258ea6; */
+}
+
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px #555;
+  background-color: #ffffff; */
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+label {
+  position: absolute;
+    top:50%;
+    left:15px;
+    transform: translateY(-50%);
+    pointer-events: none;  
+    transition:  0.3s;    
+  transition:  0.3s;    
+  color: var(--text-color-black-solid);
+  background-color: var(--bg-white);
+  font-family: var(--font-family);
+  font-size: 15px;
+  letter-spacing: 0.26px;
+  line-height: 30px;
+}
+
+.input_group input:focus + label,
+.input_group input:valid + label
+{
+  position: absolute;
+   top:0;  
+   transition:  0.3s;     
+}
+
+
+
+.input_group input {
+  /* padding: 10px 10px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #cfcfcf; */
+  border: 1px solid var(--label-border);
+    background-color: var(--bg-white) ;
+    padding-left: 15px;   
+    /* color: var(--text-color-black-bold) ; */
+    color: var(--text-color-black-solid);
+    font-family: var(--font-family);
+    font-size: 15px;
+    letter-spacing: 0.26px;
+    line-height: 30px;
+    height: 50px;    
+    border-radius: 4px;
+    outline: none;
+}
+
+/* input::placeholder {
+  font-size: 1.2em;
+  font-weight: lighter;
+  color: #999;
+} */
+
+input.error {
+  border: 1px solid #F53C3C;
+}
+.input_group label.error {
+  color: #F53C3C;  
+    top: 0%;
+    transform: translateY(-50%);
+}
+
+
+
+.errorMessage {
+  color: #F53C3C;
+  font-family: var(--font-family);
+  font-size: 12px;
+  letter-spacing: 0.26px;
+  line-height: 30px;
+  display: relative;
+  padding-top: 10px;
+}
+
+
+.firstName,
+.email,
+.password
+ {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.firstName {
+  width: 100%;
+}
+
+.email,
+.password {
+  width: 100%;
+}
+
+input:focus , select:focus{
+    color: var(--text-color-black-bold) ; 
+}
+
+select{
+  border: 1px solid var(--label-border);
+  background-color: var(--bg-white) ;
+  padding-left: 15px;   
+  /* color: var(--text-color-black-bold) ; */
+  color: var(--text-color-black-solid);
+  font-family: var(--font-family);
+  font-size: 15px;
+  letter-spacing: 0.26px;
+  line-height: 30px;
+  height: 50px;    
+  border-radius: 4px;
+  outline: none;
+}
+
+.createAccount {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createAccount button { 
+  width: 100%;
+  height: 50px;
+  border-radius: 4px;
+  background-color: var(--button-deactive) ;
+  border: 1px solid var(--button-deactive) ;
+  font-family: var(--font-family);
+  color: #AAAAAA ;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.26px;
+  line-height: 25px;
+  cursor: pointer;
+}
+
+.createAccount button:hover {
+  background-color: var(--color-blue) !important;
+  border: 1px solid var(--color-blue) !important;
+  color:var(--color-white) !important;
+}
+
+
+.createAccount small {
+  color: #999;
+  font-weight: lighter;
+}
+
+
+
+
+
+/* Create Account Page */
+
+.createAccountPage{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    height: 100vh;
+    
+}
+
+.createAccountPage .formSection{
+    background-color: var(--bg-white);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    /* grid-auto-rows: 200px; */
+    grid-template-areas:
+    ". a a ."
+    ". a a .";
+    
+}
+
+.createAccountPage .formSection .form-register{
+    grid-area: a;
+    align-self: center;
+    justify-self: center;
+}
+
+.createAccountPage .formSection .form-register h1.register-headTitle{
+    color: var(--text-color-black-bold);
+    font-family: var(--font-family);
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 0.26px;
+    line-height: 38px;
+    margin-bottom: 40px;
+}
+
+.createAccountPage .formSection .form-register div.register-subTitle{  
+    color: var(--text-color-black-bold);
+    font-family: var(--font-family);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.26px;
+    line-height: 30px;
+    margin-bottom: 40px;
+    
+}
+
+.createAccountPage .formSection .form-register div.register-subTitle.next{
+    margin-top: 40px;
+}
+
+.createAccountPage .formSection .form-register div.register-subTitle .sign-in{   
+  color: var(--color-blue);
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 0.26px;
+  line-height: 30px;
+  text-decoration:none ;
+}
+
+
+
+/* Details */
+.createAccountPage .details{
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    font-family: var(--font-family);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    /* grid-auto-rows: 200px; */
+    grid-template-areas:
+    ". a a ."
+    ". a a .";
+}
+
+.createAccountPage .details div{
+    grid-area: a;
+    align-self: center;
+    justify-self: center;
+} 
+
+.createAccountPage .details div h2{
+  
+  color: var(--color-white);
+  font-family: var(--font-family);
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 0.26px;
+  line-height: 38px;
+  text-align: center;
+}
+
+.createAccountPage .details div p{
+  
+  color: var(--color-white);
+  font-family: var(--font-family);
+  font-size: 18px;
+  letter-spacing: 0.26px;
+  line-height: 30px;
+  font-weight: 400;
+  margin-top: 70px;
+}
+
+.input_group{
+  width:100%;
+  position: relative;
+
+}
+.fas.fa-eye{
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 37%;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+  .createAccountPage{
+    display: block;
+    grid-template-columns: 1.5fr 1fr;
+    height: auto;
+    
+  }
+}
