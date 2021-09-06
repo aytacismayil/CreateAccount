@@ -3,8 +3,6 @@ import CreateAccount from './CreateAccount';
 
 function App() {
 
-
-
   return (
     <div className="App">
 

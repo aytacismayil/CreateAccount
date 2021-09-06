@@ -23,7 +23,7 @@ const formValid = ({ formErrors, ...rest }) => {
   return valid;
 };
 
-class CreateAccount extends React.Component {
+class CreateAccount extends Component {
   constructor(props) {
     super(props);
 
@@ -32,6 +32,8 @@ class CreateAccount extends React.Component {
       email: null,
       password: null,
       describe: null,
+      hidden: true,
+      password: '',
       formErrors: {
         firstName: "",        
         email: "",
@@ -39,13 +41,40 @@ class CreateAccount extends React.Component {
       },
       isLocked: false
     };
+
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.toggleShow = this.toggleShow.bind(this);
   }
+
+  handlePasswordChange(e) {
+    this.setState({ password: e.target.value });
+  }
+  toggleShow() {
+    this.setState({ hidden: !this.state.hidden });
+  }
+  componentDidMount() {
+    if (this.props.password) {
+      this.setState({ password: this.props.password });
+    }
+  }
+
+  // checkform(){
+  //   if(
+  //     this.state.firstName != null && 
+  //     this.state.email != null &&
+  //     !emailRegex.test(this.state.email)
+  //     && this.state.password != null)
+  //     {
+  //       this.setState({isLocked: true});
+  //       console.log(this.state)
+  //     };
+  // }
 
   handleSubmit = e => {
     e.preventDefault();
 
     if (formValid(this.state)) {
-      alert('successfully')
+      
       console.log(`
         --SUBMITTING--
         First Name: ${this.state.firstName}       
@@ -53,7 +82,7 @@ class CreateAccount extends React.Component {
         Password: ${this.state.password}
       `);
     } else {
-      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+      console.error("DISPLAY ERROR MESSAGE");
     }
   };
 
@@ -89,19 +118,22 @@ class CreateAccount extends React.Component {
     if (this.state.firstName == null ){
       this.setState({isLocked: false});
     }
-    else if (this.state.email == null){
+    else if (this.state.email == null || !emailRegex.test(this.state.email)){
       this.setState({isLocked: false});
     }
     else if (this.state.password == null){
       this.setState({isLocked: false});
     }
-    else if (value === "" || value === "undefined" || value === null){
+    else if (value === null || value === ""){
       this.setState({isLocked: false});
     }
     else{
       this.setState({isLocked: true});
     };
+    // this.checkform();
   };
+
+
 
   render() {
     const { formErrors } = this.state;
@@ -112,7 +144,9 @@ class CreateAccount extends React.Component {
     };
 
     const unlockedStyle = {
-        
+      backgroundColor: "#EDEDED",
+      border: '1px solid #EDEDED',       
+      color: "#AAAAAA",
     };
 
     return (
@@ -167,17 +201,17 @@ class CreateAccount extends React.Component {
               <input
                 className={formErrors.password.length > 0 ? "error" : null}
                 // placeholder="Password"
-                type="password"
+                type={this.state.hidden ? 'password' : 'text'}
                 name="password"
-                
-                required
+                noValidate
+               
                 onChange={this.handleChange}
               />
               <label htmlFor="password" className={formErrors.password.length > 0 ? "error" : null}>Password</label>
               {formErrors.password.length > 0 && (
                 <span className="errorMessage">{formErrors.password}</span>
               )}
-              <button className="passwordBtn"><i class="fas fa-eye"></i></button>
+              <button className="passwordBtn" onClick={this.toggleShow}><i className="fas fa-eye"></i></button>
             </div>
             <div className="createAccount">
               {/* {console.log(this.state.isLocked)} */}
