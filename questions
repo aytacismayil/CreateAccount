@@ -1,0 +1,41 @@
+1. How do relative, fixed, absolute, and statically positions differ?
+
+positioning is probably the most confusing and misused. What it really means is “relative to itself”. If you set position: relative; on an element but no other positioning attributes (top, left, bottom or right), it will have no effect on it’s positioning at all, it will be exactly as it would be if you left it as position: static; But if you do give it some other positioning attribute, say, top: 10px;, it will shift its position 10 pixels down from where it would normally be.
+
+A fixed- position element is positioned relative to the viewport, or the browser window itself. The viewport doesn’t change when the window is scrolled, so a fixed positioned element will stay right where it is when the page is scrolled.
+
+absolute-This is a very powerful type of positioning that allows you to literally place any page element exactly where you want it. You use the positioning attributes top, left, bottom, and right to set the location. 
+
+Sticky- positioning is really unique! A sticky element will just sit there like a static element
+
+
+2.What is the difference between variables created using let, var, and const?
+
+The main difference is scoping rules. Variables declared by var keyword are scoped to the immediate function body (hence the function scope) while let variables are scoped to the immediate enclosing block denoted by { } (hence the block scope).let is block scoped
+A block is a chunk of code bounded by {}. A block lives in curly braces. Anything within curly braces is a block.const declarations are block scoped
+Like let declarations. const declarations can only be accessed within the block they were declared.
+
+3.What must be developed first, desktop or mobile view, and why?
+
+Designing for full sized screens means building for the highest specs to display and communicate as much as possible. In this design type it’s not the mobile but the desktop experience that needs to be detailed and dynamic.
+Going down to smaller resolutions (often called graceful degradation) means hiding and wrapping elements while trying to support as many original features as possible. In this case, the mobile experience is functional rather than refined.
+A strong desktop design is ideal for feature-rich websites and interfaces targeting desktop users (usually office based), especially if there is a separate Android or iOS app for the core features which would serve to optimize the experience for mobile users.
+
+4.What is the difference between an alert and an alert dialog? Also, walk us
+through the appropriate instances to use them.
+
+AlertDialog is a lightweight version of a Dialog. This is supposed to deal with INFORMATIVE matters only, That's the reason why complex interactions with the user are limited. Dialog on the other hand is able to do even more complex things .
+when would i use an Alert Dialog?
+-When i just want to inform something to the user .
+-When we want use for a prompt like Do you want to go back (Yes, No, Cancel. Alert dialog comes with 3 buttons which are positive, negative and neutral which are provided by default).
+
+
+5.What is the difference between a link, a generic button and a submit button?Walk us through the appropriate instances to use them.
+
+Actions where users affect the website itself is where you use a button. For example, sign-up and purchase actions are often buttons. The user in these situations are creating a new account and completing a monetary transaction, which are actions that affect the website’s back-end. Creating new posts or making comments are actions that change a website’s content and what the user sees. These actions affect the website’s front-end. Whenever there’s a change in the website’s back or front-end is when you use a button.
+
+
+
+
+
+
