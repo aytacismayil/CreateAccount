@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
+
 import "./CreateAccount.css";
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
+
 
 const formValid = ({ formErrors, ...rest }) => {
   let valid = true;
@@ -21,7 +23,7 @@ const formValid = ({ formErrors, ...rest }) => {
   return valid;
 };
 
-class CreateAccount extends Component {
+class CreateAccount extends React.Component {
   constructor(props) {
     super(props);
 
@@ -83,8 +85,8 @@ class CreateAccount extends Component {
     }
 
     this.setState({ formErrors, [name]: value }, () => this.state);
-    console.log(value, 'AAA', this.state)
-    if (this.state.firstName == null){
+    console.log(value, ':', this.state)
+    if (this.state.firstName == null ){
       this.setState({isLocked: false});
     }
     else if (this.state.email == null){
@@ -93,7 +95,7 @@ class CreateAccount extends Component {
     else if (this.state.password == null){
       this.setState({isLocked: false});
     }
-    else if (value === "none" || value === "undefined"){
+    else if (value === "" || value === "undefined" || value === null){
       this.setState({isLocked: false});
     }
     else{
@@ -135,7 +137,7 @@ class CreateAccount extends Component {
                 <span className="errorMessage">{formErrors.firstName}</span>
               )}
             </div>
-<div className="input_group email">
+            <div className="input_group email">
              
               <input
                 className={formErrors.email.length > 0 ? "error" : null}
@@ -161,7 +163,7 @@ class CreateAccount extends Component {
             </div>        
            
             <div className="input_group password">
-              
+           
               <input
                 className={formErrors.password.length > 0 ? "error" : null}
                 // placeholder="Password"
@@ -175,6 +177,7 @@ class CreateAccount extends Component {
               {formErrors.password.length > 0 && (
                 <span className="errorMessage">{formErrors.password}</span>
               )}
+              <button className="passwordBtn"><i class="fas fa-eye"></i></button>
             </div>
             <div className="createAccount">
               {/* {console.log(this.state.isLocked)} */}
