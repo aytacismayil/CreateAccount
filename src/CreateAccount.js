@@ -35,9 +35,9 @@ class CreateAccount extends Component {
       hidden: true,
       password: '',
       formErrors: {
-        firstName: "",        
-        email: "",
-        password: ""
+      firstName: "",        
+      email: "",
+      password: ""
       },
       isLocked: false
     };
@@ -58,17 +58,18 @@ class CreateAccount extends Component {
     }
   }
 
-  // checkform(){
-  //   if(
-  //     this.state.firstName != null && 
-  //     this.state.email != null &&
-  //     !emailRegex.test(this.state.email)
-  //     && this.state.password != null)
-  //     {
-  //       this.setState({isLocked: true});
-  //       console.log(this.state)
-  //     };
-  // }
+  checkform(){
+    if(
+      this.state.firstName !== null && 
+      this.state.email !== null &&
+      emailRegex.test(this.state.email)
+      && this.state.password !== null &&
+      this.state.password.length >= 8)
+      {
+        this.setState({isLocked: true});
+        console.log(this.state)
+      };
+  }
 
   handleSubmit = e => {
     e.preventDefault();
@@ -94,43 +95,79 @@ class CreateAccount extends Component {
       case "firstName":
         formErrors.firstName =
           value.length < 5 ? "Minimum 5 characters" : "";
+          this.setState({isLocked: false});
         break;
      
       case "email":
         formErrors.email = emailRegex.test(value)
           ? ""
           : "Please enter a valid email address";
+          this.setState({isLocked: false});
         break;
       case "password":
         formErrors.password =
           value.length < 8 ? "Minimum 8 characters" : "";
+          this.setState({isLocked: false});
         break;
       case "describe":
         formErrors.describe = 
           value === "none" ? "Select": "";
+          this.setState({isLocked: false});
         break;
-      default:
+      case "":
+        this.setState({isLocked: true});
         break;
     }
+    
+    console.log('Value : ' + value);
+
+    this.checkform();
 
     this.setState({ formErrors, [name]: value }, () => this.state);
-    console.log(value, ':', this.state)
-    if (this.state.firstName == null ){
-      this.setState({isLocked: false});
-    }
-    else if (this.state.email == null || !emailRegex.test(this.state.email)){
-      this.setState({isLocked: false});
-    }
-    else if (this.state.password == null){
-      this.setState({isLocked: false});
-    }
-    else if (value === null || value === ""){
-      this.setState({isLocked: false});
-    }
-    else{
-      this.setState({isLocked: true});
-    };
-    // this.checkform();
+    // console.log(value, ':', this.state)
+    // if (this.state.firstName === null || this.state.firstName.match(/^ *$/) !== null){
+    //   this.setState({isLocked: false});
+    //   console.log("firstName");
+    // }
+    // else if (this.state.email === null || this.state.email.match(/^ *$/) !== null || !emailRegex.test(this.state.email)){
+    //   this.setState({isLocked: false});
+    //   console.log("email");
+    // }
+    // else if (this.state.password === null || this.state.password.match(/^ *$/) !== null || this.state.password.length < 8){ 
+    //   this.setState({isLocked: false});
+    //   console.log("Password");
+    // }
+    // else{
+    //   this.setState({isLocked: true});
+    //   console.log("Son");
+    //   console.log(this.state);
+    // };
+    // // this.checkform();
+    // this.setState(this.state.value);
+
+
+    // if (this.state.firstName === null ){
+    //   this.setState({isLocked: false});
+    //   console.log("firstName");
+    // }
+    // else if (this.state.email === null || !emailRegex.test(value)){
+    //   this.setState({isLocked: false});
+    //   console.log("email");
+    // }
+    // else if (this.state.password === null){ 
+    //   this.setState({isLocked: false});
+    //   console.log("Password");
+    // }
+    // else if (value === null || value === "none"){
+    //   this.setState({isLocked: false});
+    //   console.log("Value");
+    // }
+    // else{
+    //   this.setState({isLocked: true});
+    //   console.log("Son");
+    // };
+    // // this.checkform();
+    // this.setState(this.state.value);
   };
 
 
